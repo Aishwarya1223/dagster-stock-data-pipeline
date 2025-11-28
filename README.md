@@ -51,7 +51,7 @@ dagster-stock-pipeline/
 │  ├─ libs/
 │  │  ├─ fetcher.py
 │  │  └─ db.py
-│  └─ schedules.py  (optional)
+│  
 └─ dagster_home/ (auto-created)
 ```
 
