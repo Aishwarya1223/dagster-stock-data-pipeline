@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pkl
+*.cache
+*.egg-info/
+.eggs/
+pip-log.txt
+pytest_cache/
+
+# Virtual environments
+venv/
+.envrc
+.env
+.env.local
+*.sqlite3
+
+
+.ipynb_checkpoints/
+
+
+# Environment Variables / Secrets
+
+.env
+*.key
+*.secret
+
+
+# Dagster
+
+dagster_home/
+dagster_logs/
+logs/
+workspace.snapshot
+
+
+# Docker
+
+*.log
+docker-compose.override.yml
+docker-data/
+docker/volumes
+postgres_data/
+**/postgres_data/
+
+
+# System Files
+
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Build Artifacts
+
+build/
+dist/

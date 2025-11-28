@@ -1,0 +1,2 @@
+[tool.dagster]
+# Minimal pyproject marker so dagster-daemon accepts running without extra CLI args

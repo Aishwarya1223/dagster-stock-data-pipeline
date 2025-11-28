@@ -1,0 +1,50 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# Notebooks
+*.ipynb
+.ipynb_checkpoints/
+
+# Local environment & secrets
+.env
+.env.*
+*.key
+*.secret
+
+# Git
+.git/
+.gitignore
+
+# OS & editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Docker volumes
+postgres_data/
+docker-data/
+
+# Logs & runtime files
+logs/
+dagster_logs/
+dagster_home/
+*.log
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Project files that should not be inside the Docker image
+README.md
+LICENSE

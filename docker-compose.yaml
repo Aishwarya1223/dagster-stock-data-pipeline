@@ -1,0 +1,47 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-stock_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-stock_pass}
+      POSTGRES_DB: ${POSTGRES_DB:-stock_db}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init_db.sql:/docker-entrypoint-initdb.d/init_db.sql:ro
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    restart: always
+
+  dagster:
+    build: .
+    env_file:
+      - .env
+    environment:
+      DAGSTER_HOME: /opt/dagster_home
+      PYTHONUNBUFFERED: "1"
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: "5432"
+    depends_on:
+      - postgres
+    ports:
+      - "3000:3000"
+    command: >
+      bash -c "dagster-daemon run & dagit -h 0.0.0.0 -p 3000 -w /opt/dagster/app/workspace.yaml"
+
+    volumes:
+      - ./repo:/opt/dagster/app/repo
+      - ./repo:/opt/dagster/repo
+      - ./workspace.yaml:/opt/dagster/app/workspace.yaml
+      - ./workspace.yaml:/opt/dagster/workspace.yaml
+      - ./pyproject.toml:/opt/dagster/app/pyproject.toml
+      - ./dagster_home:/opt/dagster_home
+
+
+
+
+    restart: on-failure
+
+volumes:
+  postgres_data:
